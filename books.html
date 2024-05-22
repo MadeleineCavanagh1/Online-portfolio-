@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Classes</title>
+    <style>
+      @import url("style.css");
+
+      #bookList{
+          padding: 50px 50px 50px 50px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="header">
+      <div class="logo">
+        <img src="company_logo.png" width="150" height="50" />
+      </div>
+
+      <div class="logo2">
+        <img src="logo-no-background.png" width="350" height="50" />
+      </div>
+
+      <div class="affordances">
+        <img src="search.png" width="20" height="20" />
+        <input type="text" id="search" name="search" />
+        <input type="submit" value="Search" />
+
+        <img src="bell.png" width="20" height="20" />
+        <img src="menu.png" width="20" height="20" />
+      </div>
+
+      <nav class="crumbs">
+        <ol>
+          <li class="crumb"><a href="FoxBooks.html">Home</a></li>
+          <li class="crumb"><a href="classes.html">Courses</a></li>
+          <li class="crumb"><a href="books.html">Books</a></li>
+        </ol>
+        <div class="signin">
+            <button type="button"><a href="">Sign in Here!</a></button>
+          </div>
+      </nav>
+
+      
+    </div>
+
+    <ul id="bookList"></ul>
+
+    
+
+    <script>
+        const queryParam = new URLSearchParams(window.location.search);
+        let courses = queryParam.get("courses")
+
+      fetch("https://raw.githubusercontent.com/MadeleineCavanagh1/SD330/main/FoxBooks/classes.json")
+        .then((response) => response.json())
+        .then((data) => {
+            console.log(data);
+          const course = data["courses"][courses];
+          const booksList = document.getElementById("bookList");
+          course.booksList.forEach((book) => {
+            booksList.innerHTML += "<br><li><b>" + book.title +":</b> " +book.author +", " + book.isbn + "</li>";
+            });
+        });
+       
+       
+            
+    </script>
+  </body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Add Item to List</title>
+	<script>
+		function addItem() {
+			var newItem = document.getElementById("item").value; // Get the value of the input element
+			var list = document.getElementById("myList"); // Get the ul element
+			var li = document.createElement("li"); // Create a new li element
+			var text = document.createTextNode(newItem); // Create a text node with the input value
+			li.appendChild(text); // Append the text node to the li element
+			list.appendChild(li); // Append the li element to the ul element
+		}
+	</script>
+</head>
+<body>
+	<input type="text" id="item">
+	<button onclick="addItem()">Add Item</button>
+	<ul id="myList"></ul>
+</body>
+</html>
